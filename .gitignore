@@ -1,0 +1,13 @@
+app/bower_components/
+.sass-cache/
+.tmp/
+coverage/
+hooks/
+merges/
+node_modules/
+platforms/
+plugins/
+.DS_Store
+npm-debug.log
+
+*~
