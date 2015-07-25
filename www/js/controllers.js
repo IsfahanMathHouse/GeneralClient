@@ -40,9 +40,9 @@ angular.module('starter.controllers', [])
 	$scope.getGroups = function () {
 		$http({
 			method: 'post',
-			url: serverRootUrl + 'mobile/getGroups',
+			url: serverRootUrl + 'api/mobile/getGroups',
 			data: {
-
+				a: 5
 			}
 		}).success(function (data) {
 			$scope.groups = data;
@@ -51,5 +51,21 @@ angular.module('starter.controllers', [])
 	$scope.getGroups();
 })
 
-.controller('GroupCtrl', function ($scope, $stateParams) {
+.controller('GroupCtrl', function ($scope, $stateParams, $http) {
+	$scope.group = {
+
+	};
+	$scope.getGroupInfo = function () {
+		$http({
+			method: 'post',
+			url: serverRootUrl + 'api/mobile/DownloadGroupInfo',
+			data: {
+				groupId: parseInt($stateParams.groupId, 10)
+			}
+		}).success(function (data) {
+			$scope.group = data;
+		});
+	};
+
+	$scope.getGroupInfo();
 });
